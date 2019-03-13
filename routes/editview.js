@@ -32,11 +32,14 @@ function action (req, name) {
 }
 
 exports.get = function (req, res, next) {
-    var args = getArgs(req, res);
+    var args = getArgs(req, res),
+		    events = res.locals._admin.events;
 
     editview.getTypes(args, function (err, data) {
         if (err) return next(err);
-        render(req, res, next, data, args);
+        events.preEdit(req, res, data, args, function () {
+          render(req, res, next, data, args);
+        })
     });
 }
 
@@ -126,13 +129,13 @@ function render (req, res, next, data, args) {
     data.oneToOne.type = 'one';
     data.manyToOne.type = 'many';
     res.locals.inline = [data.oneToOne, data.manyToOne];
-        
+
     res.locals.partials = {
         content:  'editview',
         view:     'editview/view',
         inline:   'editview/inline',
         column:   'editview/column'
     };
-    
+
     next();
 }
