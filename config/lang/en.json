@@ -1,8 +1,8 @@
 {
     "name"              : "English",
 
-    "logo"              : "Express Admin",
-    
+    "logo"              : "Flexitive Support Admin",
+
     "layout"            : "Layout",
     "centered"          : "Centered",
     "streched"          : "Streched",
@@ -18,11 +18,11 @@
     "invalid-password"  : "Invalid password!",
 
     "home"              : "Home",
-    "site-admin"        : "Site administration",
+    "site-admin"        : "Flexitive Support Admin",
     "tables"            : "Tables",
     "views"             : "Views",
-    "others"            : "Others",
-    
+    "others"            : "Tools",
+
     "select"            : "Select",
     "to-change"         : "to change",
     "filter"            : "Filter",
