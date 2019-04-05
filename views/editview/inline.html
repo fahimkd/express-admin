@@ -25,6 +25,9 @@
                         {{/remove}}
                     </label>
                     {{/insert}}
+					{{#pk}}
+					<a href="{{openLink.href}}{{value}}" class="btn-xs pull-right">{{openLink.text}}</a>
+					{{/pk}}
                 </td>
             </tr>
             {{#columns}}
@@ -45,10 +48,10 @@
             {{#blank}}
             <tr class="blank hidden">
                 {{>column}}
-            </tr>	
+            </tr>
             {{/blank}}
         </tbody>
-        <tfoot {{#one}}{{#records}}class="hidden"{{/records}}{{/one}}>
+        <tfoot {{#noManyToManyAdd}}class="hidden"{{/noManyToManyAdd}} {{#one}}{{#records}}class="hidden"{{/records}}{{/one}}>
             <tr>
                 <td><a href="#" class="add-another" data-table="{{name}}"><small>{{string.add-another}} {{verbose}}</small></a></td>
             </tr>

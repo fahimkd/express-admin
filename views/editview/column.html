@@ -2,9 +2,9 @@
 <td>
     <div class="form-horizontal {{#error}}has-error{{/error}}">
         <div class="form-group">
-    
+
         <label class="control-label col-sm-3 col-md-3 col-lg-2">{{verbose}}</label>
-    
+
     {{#control}}
     {{! data-type-name="type.name" data-allow-null="allowNull" data-default-value="defaultValue"}}
 
@@ -18,16 +18,20 @@
     <input type="text" name="{{key}}" value="{{value}}" class="form-control" />
     {{/text}}
 
+    {{#readonly}}
+	<div class="control-label" style="text-align: left;"><span style="padding-left: 14px;">{{{value}}}</span></div>
+    {{/readonly}}
+
     {{#textarea}}
     <textarea name="{{key}}" class="form-control {{#editor}}{{editor}}{{/editor}}">{{value}}</textarea>
     {{/textarea}}
 
     {{#select}}
     <select name="{{key}}" class="chosen-select form-control" data-placeholder="{{string.select}}" {{#multiple}}multiple="multiple"{{/multiple}}>
-        <option value="" {{#selected}}selected="selected"{{/selected}}></option>
+		{{^disabled}}<option value="" {{#selected}}selected="selected"{{/selected}}></option>{{/disabled}}
         {{!oneToMany}}
         {{#value}}
-        <option value="{{__pk}}" {{#selected}}selected="selected"{{/selected}}>{{__text}}</option>
+        <option value="{{__pk}}" {{#selected}}selected="selected"{{/selected}} {{#disabled}}disabled{{/disabled}}>{{__text}}</option>
         {{/value}}
     </select>
     {{/select}}
@@ -53,7 +57,7 @@
     {{#binary}}
     <img src="{{value}}" alt="" />
     {{/binary}}
-    
+
     {{#radio}}
     {{#value}}
     <label class="radio-inline">
