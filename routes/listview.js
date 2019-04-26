@@ -128,9 +128,9 @@ function render (req, res, args, ddata, pager, order, next) {
     res.locals.partials = {
         content:    'listview',
         filter:     'listview/filter',
-        column:     'listview/column',
+    		filtercolumn:     'listview/filtercolumn',
         pagination: 'pagination'
     };
-    
+
     next();
 }
